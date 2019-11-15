@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="jumbotron">
+  <h1 class="display-4">Newspaper app</h1>
+
+  <p class="lead">Newspaper Website built with Django</p>
+  <h2>Hi {{user.username}}</h2>
+  <p class="lead"><a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View all Articles</a></p>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+  {% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Login</a> |
+  <a href="{% url 'signup' %}">Signup</a>
+</div>
+
+<!--Hi {{user.username}}
+<p><a href="{% url 'logout' %}">Logout</a></p>
+
+<!--<p>You are not logged in</p>
+<a href="{% url 'login' %}">Login</a> |
+<a href="{% url 'signup' %}">Signup</a>-->
+
+{% endif %}
+{% endblock %}
